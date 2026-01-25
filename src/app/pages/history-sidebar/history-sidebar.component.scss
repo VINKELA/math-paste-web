@@ -1,0 +1,179 @@
+@import '../../@theme/styles/themes.scss';
+
+@include nb-install-component() {
+  
+  .sidebar-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: nb-theme(background-basic-color-1);
+  }
+
+  .sidebar-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid nb-theme(divider-color);
+    background-color: nb-theme(background-basic-color-2);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: nb-theme(text-basic-color); /* Changes Black <-> White */
+  }
+
+  .refresh-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: nb-theme(color-primary-500);
+    transition: transform 0.2s;
+
+    &:active { transform: rotate(180deg); }
+  }
+
+  .history-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: nb-theme(background-basic-color-2);
+  }
+
+  .history-card {
+    background-color: nb-theme(background-basic-color-1);
+    border: 1px solid nb-theme(divider-color);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: transform 0.1s;
+
+    &:hover {
+      border-color: nb-theme(color-primary-500);
+      transform: translateY(-1px);
+    }
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .badge {
+    font-weight: bold;
+    background-color: nb-theme(background-basic-color-3);
+    color: nb-theme(text-basic-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+  }
+
+  .date {
+    font-size: 0.7rem;
+    color: nb-theme(text-hint-color);
+  }
+
+  .card-body {
+    font-size: 0.85rem;
+    color: nb-theme(text-basic-color);
+    margin-bottom: 10px;
+    font-family: 'Consolas', monospace;
+    word-break: break-all;
+  }
+
+  .copy-link {
+    background: transparent;
+    border: 1px solid nb-theme(color-primary-500);
+    color: nb-theme(color-primary-500);
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 4px;
+    width: 100%;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: nb-theme(color-primary-500);
+      color: #fff;
+    }
+  }
+
+  .state-msg {
+    padding: 40px 20px;
+    text-align: center;
+    color: nb-theme(text-hint-color);
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ... imports ... */
+
+@include nb-install-component() {
+  /* ... existing styles ... */
+.sidebar-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stacks Header, List, Footer vertically */
+    background-color: nb-theme(background-basic-color-1);
+  }
+  /* NEW: Action Group Container */
+  .card-actions {
+    display: flex;
+    gap: 8px; /* Space between buttons */
+    margin-top: 10px;
+  }
+.history-list-area {
+    flex: 1; /* Takes all remaining height */
+    overflow-y: auto; /* Scroll ONLY this part */
+    padding: 10px;
+    background-color: nb-theme(background-basic-color-2);
+  }
+  /* Base Button Style */
+  .action-btn {
+    border: 1px solid nb-theme(color-primary-500);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px 0;
+    transition: all 0.2s;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  /* Copy Button (Primary Action - Wider) */
+  .copy-btn {
+    flex: 1; /* Takes most space */
+    color: nb-theme(color-primary-500);
+
+    &:hover {
+      background-color: nb-theme(color-primary-500);
+      color: #fff;
+    }
+  }
+
+  /* Download Button (Secondary Action - Icon Only) */
+  .download-btn {
+    width: 35px; /* Fixed square width */
+    color: nb-theme(text-hint-color);
+    border-color: nb-theme(divider-color);
+
+    &:hover {
+      border-color: nb-theme(color-success-500);
+      color: nb-theme(color-success-500);
+      background-color: nb-theme(background-basic-color-2);
+    }
+  }
+}

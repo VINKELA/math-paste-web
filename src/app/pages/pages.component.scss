@@ -1,0 +1,51 @@
+/* 1. Import Nebular Theme System */
+@import '../@theme/styles/themes';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+/* 2. Wrap styles in this mixin to enable Theme Switching */
+@include nb-install-component() {
+
+  .split-layout {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    /* Use Nebular's background color (White in Light, Dark Blue in Cosmic) */
+    background-color: nb-theme(background-basic-color-1);
+    /* Ensure it fills the screen height */
+    min-height: calc(100vh - 4.75rem); 
+  }
+
+  .content-pane {
+    flex: 1; /* Take all remaining width */
+    overflow-y: auto; /* Allow scrolling inside */
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .sidebar-pane {
+    width: 320px; /* Fixed width */
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    
+    /* Theme-aware Background */
+    background-color: nb-theme(background-basic-color-1);
+    /* Theme-aware Border */
+    border-left: 1px solid nb-theme(divider-color);
+  }
+
+  /* Mobile Responsive: Stack them vertically */
+  @include media-breakpoint-down(md) {
+    .split-layout {
+      flex-direction: column;
+      height: auto;
+    }
+    
+    .sidebar-pane {
+      width: 100%;
+      height: 400px; /* Fixed height on mobile */
+      border-left: none;
+      border-top: 1px solid nb-theme(divider-color);
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="header-section">
+    <h2>AI Formula Clipboard</h2>
+    <div class="auth-status" *ngIf="isAuthenticated">
+      <span class="badge-success">Hi, {{ user.username || 'User' }}</span>
+    </div>
+  </div>
+  
+  <div class="input-section">
+    <textarea 
+      [(ngModel)]="rawText" 
+      placeholder="Paste your AI response here..."
+      rows="6">
+    </textarea>
+  </div>
+
+  <div class="grid-controls">
+    <label class="option-card" [class.active]="selectedTarget === 'OFFICE'">
+      <input type="radio" name="target" [(ngModel)]="selectedTarget" value="OFFICE">
+      <span class="card-title">PowerPoint & Word</span>
+      <span class="card-desc">Editable MathML.</span>
+    </label>
+
+    <label class="option-card" [class.active]="selectedTarget === 'GDOCS'">
+      <input type="radio" name="target" [(ngModel)]="selectedTarget" value="GDOCS">
+      <span class="card-title">Google Docs</span>
+      <span class="card-desc">HTML/CSS format.</span>
+    </label>
+
+    <label class="option-card" [class.active]="selectedTarget === 'UNICODE'">
+      <input type="radio" name="target" [(ngModel)]="selectedTarget" value="UNICODE">
+      <span class="card-title">Social / Notepad</span>
+      <span class="card-desc">Plain text symbols.</span>
+    </label>
+
+    <label class="option-card" [class.active]="selectedTarget === 'MARKDOWN'">
+      <input type="radio" name="target" [(ngModel)]="selectedTarget" value="MARKDOWN">
+      <span class="card-title">Markdown</span>
+      <span class="card-desc">Preserve LaTeX $.</span>
+    </label>
+  </div>
+
+<div class="action-buttons">
+  <button (click)="processAndCopy()" [disabled]="!rawText" class="primary-btn">
+    {{ copyStatus ? copyStatus : 'Transform & Copy' }}
+  </button>
+
+  <button (click)="downloadFile()" [disabled]="!rawText" class="secondary-btn" title="Download as file">
+    <i class="nb-arrow-thin-down"></i> Download
+  </button>
+</div>
+
+  <div class="footer-info">
+    <div *ngIf="copyStatus" class="status-bar" [ngClass]="statusType === 'success' ? 'status-success' : 'status-error'">
+      {{ copyStatus }}
+    </div>
+
+<div class="auth-controls">
+  
+  <div *ngIf="!isAuthenticated" class="guest-actions">
+    <a routerLink="/auth/login" class="login-btn">
+      <i class="nb-person"></i> Log In to Save History
+    </a>
+  </div>
+
+  <div *ngIf="isAuthenticated" class="user-actions">
+    <button (click)="logout()" class="logout-link">
+      Not {{ user.username }}? <span class="logout-text">Log out</span>
+    </button>
+  </div>
+
+</div>
+  </div>
+</div>

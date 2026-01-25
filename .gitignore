@@ -1,0 +1,60 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+/docs
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# .gitignore for Django
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment (Very Important!)
+venv/
+env/
+.env
+
+# Database (Don't upload local DB)
+db.sqlite3
+
+# Static files generated for production
+staticfiles/
+
+# VS Code settings
+.vscode/

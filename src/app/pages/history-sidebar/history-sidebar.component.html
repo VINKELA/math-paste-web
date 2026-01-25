@@ -1,0 +1,38 @@
+<div class="sidebar-container">
+  <div class="sidebar-header">
+    <h3><i class="nb-list"></i> History</h3>
+    <button (click)="loadHistory()" class="refresh-btn" title="Refresh">↻</button>
+  </div>
+
+  <div *ngIf="!isAuthenticated" class="state-msg">
+    <p>Login to save and view your history.</p>
+  </div>
+
+  <div *ngIf="isAuthenticated && historyList.length === 0" class="state-msg">
+    <p>No history yet. Transform some text!</p>
+  </div>
+
+  <div class="history-list" *ngIf="isAuthenticated && historyList.length > 0">
+<div *ngFor="let item of historyList" class="history-card">
+  
+  <div class="card-top">
+    <span class="badge">{{ item.editor_type }}</span>
+    <span class="date">{{ item.created_at | date:'shortTime' }}</span>
+  </div>
+  
+  <div class="card-body" title="{{ item.original_text }}">
+      {{ item.original_text | slice:0:60 }}{{ item.original_text.length > 60 ? '...' : '' }}
+  </div>
+  
+  <div class="card-actions">
+    <button (click)="copyItem(item)" class="action-btn copy-btn" title="Copy to Clipboard">
+      <i class="nb-copy"></i> Copy
+    </button>
+    <button (click)="downloadItem(item)" class="action-btn download-btn" title="Download File">
+      <i class="nb-arrow-thin-down"></i>
+    </button>
+  </div>
+
+</div>
+  </div>
+</div>
