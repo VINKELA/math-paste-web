@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { TargetEditor, TextTransformerService } from 'app/@core/utils/text-transformer.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'formatter',
