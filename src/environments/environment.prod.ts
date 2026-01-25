@@ -5,4 +5,5 @@
  */
 export const environment = {
   production: true,
+  api: 'https://math-paste-api.onrender.com/api/'
 };
