@@ -23,7 +23,8 @@
               "src/assets",
               "src/favicon.ico",
               "src/favicon.png",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/sitemap.xml"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
