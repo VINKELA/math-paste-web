@@ -1,0 +1,14 @@
+<div class="blog-container">
+  <h1>Latest Updates</h1>
+
+  <div class="post-card" *ngFor="let post of posts">
+    <h2>{{ post.title }}</h2>
+    <p class="date">{{ post.created_at | date:'mediumDate' }}</p>
+    <p>{{ post.description }}</p>
+    <button nbButton status="primary" outline [routerLink]="['/pages/blog', post.slug]">Read More</button>
+  </div>
+
+  <div *ngIf="posts.length === 0">
+    <p>No posts found. Check your backend!</p>
+  </div>
+</div>

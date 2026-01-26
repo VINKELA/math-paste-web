@@ -10,5 +10,5 @@
 
 export const environment = {
   production: false,
-  api: 'https://math-paste-api.onrender.com/api/'
+  api: 'http://localhost:8000/api/'
 };

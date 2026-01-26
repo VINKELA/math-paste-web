@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbMenuModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbMenuModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -9,6 +9,8 @@ import { FormatterComponent } from './formatter/formatter.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HistorySidebarComponent } from './history-sidebar/history-sidebar.component';
+import { BlogListComponent } from './blog-list/blog-list.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 
 @NgModule({
   imports: [
@@ -18,11 +20,15 @@ import { HistorySidebarComponent } from './history-sidebar/history-sidebar.compo
     ThemeModule,
     NbMenuModule,
     DashboardModule,
+    NbButtonModule,
+    NbCardModule, // Optional, but recommended for blog posts
   ],
   declarations: [
     PagesComponent,
     FormatterComponent,
-    HistorySidebarComponent,  
+    HistorySidebarComponent,
+    BlogListComponent,
+    BlogDetailComponent,  
   ],
 })
 export class PagesModule {

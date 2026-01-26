@@ -53,6 +53,7 @@ const NB_MODULES = [
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
+  NbButtonModule
 ];
 const COMPONENTS = [
   SwitcherComponent,
