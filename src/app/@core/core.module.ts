@@ -9,6 +9,7 @@ import { AnalyticsService, SeoService } from './utils';
 import { UserData } from './data/users';
 import { UserService } from './mock/users.service';
 import { MockDataModule } from './mock/mock-data.module';
+import { environment } from 'environments/environment';
 
 const socialLinks = [
   {
@@ -77,7 +78,7 @@ export const NB_CORE_PROVIDERS = [
     strategies: [
       NbPasswordAuthStrategy.setup({
         name: 'email',
-        baseEndpoint: 'http://localhost:8000/api', // Your Django URL
+        baseEndpoint: environment.api, // Your Django URL
         
         login: {
           endpoint: '/token/', // Django SimpleJWT login endpoint
