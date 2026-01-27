@@ -2,7 +2,7 @@
   <div class="header-section">
     <h2>AI Formula Clipboard</h2>
     <div class="auth-status" *ngIf="isAuthenticated">
-      <span class="badge-success">Hi, {{ user.username || 'User' }}</span>
+      <span class="badge-success">Hi, {{ user.firstname || 'User' }}</span>
     </div>
   </div>
   
@@ -58,9 +58,15 @@
 <div class="auth-controls">
   
   <div *ngIf="!isAuthenticated" class="guest-actions">
-    <a routerLink="/auth/login" class="login-btn">
-      <i class="nb-person"></i> Log In to Save History
-    </a>
+    <div class="auth-buttons">
+      <span class="auth-label">Do you want to save your history? &nbsp;</span>
+      <a routerLink="/auth/login" class="login-btn">
+        <i class="nb-person"></i> Log In
+      </a> &nbsp;  OR &nbsp; 
+      <a routerLink="/auth/register" class="login-btn">
+        <i class="nb-person"></i> Sign Up
+      </a>
+    </div>
   </div>
 
   <div *ngIf="isAuthenticated" class="user-actions">
