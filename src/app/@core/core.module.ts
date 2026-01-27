@@ -78,7 +78,7 @@ export const NB_CORE_PROVIDERS = [
     strategies: [
       NbPasswordAuthStrategy.setup({
         name: 'email',
-        baseEndpoint: environment.api, // Your Django URL
+        baseEndpoint: environment.api.charAt(environment.api.length - 1), // Your Django URL
         
         login: {
           endpoint: '/token/', // Django SimpleJWT login endpoint
