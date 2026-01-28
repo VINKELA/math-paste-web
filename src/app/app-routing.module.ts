@@ -8,6 +8,8 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import { N } from '@angular/cdk/keycodes';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -41,7 +43,7 @@ export const routes: Routes = [
       },
       {
         path: 'reset-password',
-        component: NbResetPasswordComponent,
+        component: ResetPasswordComponent,
       },
     ],
   },

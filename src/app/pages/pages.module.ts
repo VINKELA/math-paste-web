@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbButtonModule, NbCardModule, NbMenuModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbInputModule, NbMenuModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 import { HistorySidebarComponent } from './history-sidebar/history-sidebar.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { NbAuthModule } from '@nebular/auth';
 
 @NgModule({
   imports: [
@@ -21,14 +23,18 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
     NbMenuModule,
     DashboardModule,
     NbButtonModule,
+    NbAuthModule,
     NbCardModule, // Optional, but recommended for blog posts
+    NbInputModule,  // <--- ADD THIS
+    NbButtonModule, // <--- ADD THIS
   ],
   declarations: [
     PagesComponent,
     FormatterComponent,
     HistorySidebarComponent,
     BlogListComponent,
-    BlogDetailComponent,  
+    BlogDetailComponent,
+    ResetPasswordComponent,  
   ],
 })
 export class PagesModule {

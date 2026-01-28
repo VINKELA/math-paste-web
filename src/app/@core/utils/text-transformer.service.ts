@@ -94,4 +94,31 @@ private apiUrl = `${environment.api}save-history/`  ;
     text = text.replace(/_([0-9])/g, (_, digit) => subscripts[digit]);
     return text.replace(/[{}]/g, '');
   }
+ // 2. Delete Item (Protected)
+  deleteItem(id: number): Observable<void> {
+    return this.authService.getToken().pipe(
+      switchMap(token => {
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token.getValue()}`
+        });
+        return this.http.delete<void>(`${this.apiUrl}${id}/`, { headers });
+      })
+    );
+  }
+  // Add this function
+deleteHistoryItem(item: any, event: Event) {
+  event.stopPropagation(); // Prevent clicking the "Trash" from pasting the text
+  
+  if (!confirm('Delete this item?')) return;
+
+  this.deleteItem(item.id).subscribe({
+    next: () => {
+      // Remove it from the list instantly without reloading
+      this.triggerRefresh();
+    },
+    error: (err) => console.error(err)
+  });
+}
+ 
+  
 }

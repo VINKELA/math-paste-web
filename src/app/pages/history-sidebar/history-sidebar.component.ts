@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { HistoryItem, TargetEditor, TextTransformerService } from 'app/@core/utils/text-transformer.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-history-sidebar',
@@ -109,5 +109,19 @@ historyList: HistoryItem[] = [];
     
     window.URL.revokeObjectURL(url);
   }
+
+  deleteHistoryItem(item: HistoryItem, event: Event) {
+  event.stopPropagation(); // Prevent clicking the "Trash" from pasting the text
+  
+  if (!confirm('Delete this item?')) return;
+
+  this.service.deleteItem(item.id).subscribe({
+    next: () => {
+      // Remove it from the list instantly without reloading
+      this.historyList = this.historyList.filter(h => h.id !== item.id);
+    },
+    error: (err) => console.error('Delete failed', err)
+  });
+}
 
 }

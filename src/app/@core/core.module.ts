@@ -97,6 +97,15 @@ export const NB_CORE_PROVIDERS = [
             failure: null,
           },
     },
+    requestPass: {
+    endpoint: '/password/', 
+    method: 'post',
+    redirect: {
+      success: '/auth/login', // Go back to login after sending email
+      failure: null,
+    },
+  },
+    
         logout: {
           endpoint: '', // JWT is stateless; usually no backend call needed
         },

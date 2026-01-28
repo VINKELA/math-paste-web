@@ -31,6 +31,9 @@
     <button (click)="downloadItem(item)" class="action-btn download-btn" title="Download File">
       <i class="nb-arrow-thin-down"></i>
     </button>
+    <button nbButton ghost status="danger" size="small" (click)="deleteHistoryItem(item, $event)">
+      <i class="nb-trash"></i>
+    </button>
   </div>
 
 </div>
