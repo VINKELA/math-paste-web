@@ -40,42 +40,72 @@
     </label>
   </div>
 
-<div class="action-buttons">
-  <button (click)="processAndCopy()" [disabled]="!rawText" class="primary-btn">
-    {{ copyStatus ? copyStatus : 'Transform & Copy' }}
-  </button>
+  <div class="action-buttons">
+    <button (click)="processAndCopy()" [disabled]="!rawText" class="primary-btn">
+      {{ copyStatus ? copyStatus : 'Transform & Copy' }}
+    </button>
 
-  <button (click)="downloadFile()" [disabled]="!rawText" class="secondary-btn" title="Download as file">
-    <i class="nb-arrow-thin-down"></i> Download
-  </button>
-  
-</div>
+    <button (click)="downloadFile()" [disabled]="!rawText" class="secondary-btn" title="Download as file">
+      <i class="nb-arrow-thin-down"></i> Download
+    </button>
+  </div>
 
   <div class="footer-info">
     <div *ngIf="copyStatus" class="status-bar" [ngClass]="statusType === 'success' ? 'status-success' : 'status-error'">
       {{ copyStatus }}
     </div>
 
-<div class="auth-controls">
-  
-  <div *ngIf="!isAuthenticated" class="guest-actions">
-    <div class="auth-buttons">
-      <span class="auth-label">Do you want to save your history? &nbsp;</span>
-      <a routerLink="/auth/login" class="login-btn">
-        <i class="nb-person"></i> Log In
-      </a> &nbsp;  OR &nbsp; 
-      <a routerLink="/auth/register" class="login-btn">
-        <i class="nb-person"></i> Sign Up
-      </a>
+    <div class="auth-controls">
+      <div *ngIf="!isAuthenticated" class="guest-actions">
+        <div class="auth-buttons">
+          <span class="auth-label">Do you want to save your history? &nbsp;</span>
+          <a routerLink="/auth/login" class="login-btn">
+            <i class="nb-person"></i> Log In
+          </a> &nbsp; OR &nbsp; 
+          <a routerLink="/auth/register" class="login-btn">
+            <i class="nb-person"></i> Sign Up
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="isAuthenticated" class="user-actions">
+        <button (click)="logout()" class="logout-link">
+          Not {{ user.username }}? <span class="logout-text">Log out</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <div *ngIf="isAuthenticated" class="user-actions">
-    <button (click)="logout()" class="logout-link">
-      Not {{ user.username }}? <span class="logout-text">Log out</span>
-    </button>
+  <div class="row seo-section">
+    <div class="col-md-12">
+      <nb-card class="seo-content-card">
+        <nb-card-body>
+          
+          <h1>How to Copy Math from ChatGPT to Word</h1>
+          
+          <p>
+            Struggling to paste equations from ChatGPT into your research paper or homework? 
+            You are not alone. AI models often output math in <strong>LaTeX format</strong> 
+            which Microsoft Word doesn't render automatically when pasted.
+          </p>
+  
+          <h2>Why Formula Clipboard?</h2>
+          <p>
+            Formula Clipboard acts as a bridge between your AI and your document. 
+            We strip away the broken code and format the equation so it pastes 
+            perfectly into <strong>Microsoft Word, Google Docs, and PowerPoint</strong>.
+          </p>
+  
+          <h3>How to use:</h3>
+          <ol>
+            <li>Copy the math output from ChatGPT, Claude, or Gemini.</li>
+            <li>Paste it into the box above.</li>
+            <li>Click <strong>"Transform & Copy"</strong>.</li>
+            <li>Paste the result directly into your document.</li>
+          </ol>
+  
+        </nb-card-body>
+      </nb-card>
+    </div>
   </div>
-
-</div>
   </div>
-</div>

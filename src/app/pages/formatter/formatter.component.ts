@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { Component, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Title, Meta } from '@angular/platform-browser';
 import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { TargetEditor, TextTransformerService } from 'app/@core/utils/text-transformer.service';
 import { environment } from 'environments/environment';
@@ -23,10 +24,26 @@ rawText: string = '';
   constructor(
     private transformer: TextTransformerService,
     private authService: NbAuthService,
-    private http: HttpClient
+    private http: HttpClient,
+    private titleService: Title, 
+    private metaService: Meta
   ) {}
 
   ngOnInit(): void {
+    // 3. Set the "Clickable" Google Title
+    this.titleService.setTitle('Formula Clipboard | Convert ChatGPT Math to Word Instantly');
+
+    // 4. Set the Description (Crucial for ranking)
+    this.metaService.updateTag({ 
+      name: 'description', 
+      content: 'Fix broken math formulas from ChatGPT, Claude, and Gemini. Convert LaTeX to clean Word equations instantly. The fastest way to copy-paste AI math into documents.' 
+    });
+
+    // 5. Add Keywords
+    this.metaService.updateTag({
+      name: 'keywords',
+      content: 'ChatGPT math, LaTeX to Word, fix AI formulas, math paste, formula clipboard'
+    });
     this.authService.onTokenChange().subscribe((token: NbAuthJWTToken) => {
       this.isAuthenticated = token.isValid();
       if (this.isAuthenticated) this.user = token.getPayload();
@@ -48,6 +65,7 @@ rawText: string = '';
     } catch (err) {
       this.showFeedback('Failed to copy.', 'error');
     }
+
   }
 
   private async copyToClipboard(processedText: string): Promise<void> {
