@@ -31,8 +31,7 @@ rawText: string = '';
 
   ngOnInit(): void {
     // 3. Set the "Clickable" Google Title
-    this.titleService.setTitle('Formula Clipboard | Convert ChatGPT Math to Word Instantly');
-
+    this.titleService.setTitle('MathPaste | Convert ChatGPT Math to Word Instantly');
     // 4. Set the Description (Crucial for ranking)
     this.metaService.updateTag({ 
       name: 'description', 
@@ -42,7 +41,7 @@ rawText: string = '';
     // 5. Add Keywords
     this.metaService.updateTag({
       name: 'keywords',
-      content: 'ChatGPT math, LaTeX to Word, fix AI formulas, math paste, formula clipboard'
+      content: 'ChatGPT math, LaTeX to Word, fix AI formulas, math paste, MathPaste'
     });
     this.authService.onTokenChange().subscribe((token: NbAuthJWTToken) => {
       this.isAuthenticated = token.isValid();
