@@ -1,0 +1,35 @@
+name: Deploy Angular to Mac Mini
+
+on:
+  push:
+    branches:
+      - main # Or 'master', depending on your default branch
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: 🚀 Pull and Deploy Angular Container
+        shell: zsh -e {0}
+        run: |
+          export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+          
+          # Creates the folder on the Mac Mini
+          mkdir -p /Users/kalu/angular-web
+          cd /Users/kalu/angular-web
+          
+          # Initialize git if needed
+          if [ ! -d ".git" ]; then
+            git init
+            git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VINKELA/your-angular-repo.git
+          fi
+          
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VINKELA/your-angular-repo.git
+          
+          git fetch --all
+          git reset --hard origin/main
+          
+          # Connect to Colima and Build
+          export DOCKER_HOST="unix:///Users/kalu/.colima/default/docker.sock"
+          docker compose up -d --build

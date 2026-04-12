@@ -1,0 +1,7 @@
+services:
+  angular-web:
+    build: .
+    container_name: angular-web
+    ports:
+      - "8082:80" # Assigned to port 8082 to prevent collisions
+    restart: unless-stopped
