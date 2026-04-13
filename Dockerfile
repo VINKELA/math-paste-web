@@ -19,7 +19,7 @@ FROM nginx:alpine
 # Copy the custom Angular routing config (to prevent 404s on page refresh)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy the finished production files into the Nginx server
-COPY --from=builder /app/dist/math-paste-web /usr/share/nginx/html
+# Copy the finished production files directly from the root of the dist folder
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
