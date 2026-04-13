@@ -30,6 +30,12 @@ jobs:
           git fetch --all
           git reset --hard origin/master
           
+          # --- THE ULTIMATE KEYCHAIN BYPASS ---
+          # We force the runner to create and use a completely blank config
+          mkdir -p /Users/kalu/.docker-bypass
+          echo '{"credsStore": "", "credHelpers": {}}' > /Users/kalu/.docker-bypass/config.json
+          export DOCKER_CONFIG="/Users/kalu/.docker-bypass"
+          
           # Connect to Colima and Build
           export DOCKER_HOST="unix:///Users/kalu/.colima/default/docker.sock"
           docker compose up -d --build
