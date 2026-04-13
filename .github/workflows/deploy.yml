@@ -3,7 +3,7 @@ name: Deploy Angular to Mac Mini
 on:
   push:
     branches:
-      - master # Or 'master', depending on your default branch
+      - master
 
 jobs:
   deploy:
@@ -16,19 +16,19 @@ jobs:
           export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
           
           # Creates the folder on the Mac Mini
-          mkdir -p /Users/kalu/angular-web
-          cd /Users/kalu/angular-web
+          mkdir -p /Users/kalu/math-paste-web
+          cd /Users/kalu/math-paste-web
           
           # Initialize git if needed
           if [ ! -d ".git" ]; then
             git init
-            git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VINKELA/your-angular-repo.git
+            git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VINKELA/math-paste-web.git
           fi
           
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VINKELA/your-angular-repo.git
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/VINKELA/math-paste-web.git
           
           git fetch --all
-          git reset --hard origin/main
+          git reset --hard origin/master
           
           # Connect to Colima and Build
           export DOCKER_HOST="unix:///Users/kalu/.colima/default/docker.sock"
