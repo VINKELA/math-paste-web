@@ -5,8 +5,10 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 # Builds the app for production
+# Allow legacy OpenSSL algorithms for older Webpack builds
+ENV NODE_OPTIONS=--openssl-legacy-provider
+# Builds the app for production
 RUN npm run build --configuration=production
-
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
 # Copy our custom routing config
