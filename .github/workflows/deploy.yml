@@ -32,4 +32,4 @@ jobs:
           
           # --- THE COLIMA SSH BYPASS ---
           # We bypass the Mac completely and run Docker natively inside the Linux VM!
-          colima ssh -- "cd /Users/kalu/math-paste-web && docker compose up -d --build"
+          colima ssh -- sh -c "cd /Users/kalu/math-paste-web && docker compose up -d --build"
