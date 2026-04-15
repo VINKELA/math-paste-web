@@ -5,5 +5,5 @@
  */
 export const environment = {
   production: true,
-  api: 'https://api.formulaclipboard.io/api/'
+  api: 'https://api.mathpaste.com/api/'
 };
